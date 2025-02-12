@@ -4,6 +4,7 @@
 
 #ifndef ROOK_HPP
 #define ROOK_HPP
+
 #include "ChessPiece.hpp"
 
 /**
