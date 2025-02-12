@@ -54,7 +54,7 @@ string ChessPiece::UpperCase(const string& color) const { //convert string color
 }
 
 bool ChessPiece::ValidPosition(int value) const { //check if row and column is within valid range
-    return (value >= 0 && value < BOARD_SIZE);
+    return (value >= 0 && value < BOARD_LENGTH);
 }
 
 string ChessPiece::getColor() const {
@@ -107,6 +107,6 @@ void ChessPiece::display() const {
     if (row_ != -1 && column_ != -1) {
         cout << color_ << " piece at (" << row_ << ", " << column_ << ") is moving " << (movingUp_ ? "UP" : "DOWN") << endl;
     } else {
-        cout << color_ << "piece is not on the board" << endl;
+        cout << color_ << " piece is not on the board" << endl;
     }
 }
