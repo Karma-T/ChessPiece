@@ -19,8 +19,12 @@ ChessPiece::ChessPiece() {
 
 //parameterized constructor
 ChessPiece::ChessPiece(const string& color, const int& row, const int& column, const bool& movingUp) {
-    color_ = ValidColor(color) ? UpperCase(color) : "BLACK";
-    
+    if (ValidColor(color)) {
+        color_ = UpperCase(color);
+    } else {
+        color_ = "BLACK";
+    }
+
     if (ValidPosition(row) && ValidPosition(column)) {
         row_ = row;
         column_ = column;
@@ -31,7 +35,6 @@ ChessPiece::ChessPiece(const string& color, const int& row, const int& column, c
 
     movingUp_ = movingUp;
 }
-
 
 bool ChessPiece::ValidColor(const string& color) const { //check if color is valid
     for (char c : color) {
