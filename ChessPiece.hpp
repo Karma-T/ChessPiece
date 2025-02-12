@@ -13,6 +13,8 @@ class ChessPiece {
         int row_;   //row of the chess piece
         int column_;    //column of the chess piece
         bool movingUp_; //direction of the chess piece
+
+    protected:
         static const int BOARD_LENGTH = 8; //size of the chess board
 
     public:
