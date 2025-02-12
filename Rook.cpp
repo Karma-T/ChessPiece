@@ -7,8 +7,15 @@
 #include "Rook.hpp"
 
 using namespace std;
+Rook::Rook(){
+    color_ = "BLACK";
+    row_ = -1;
+    column_ = -1;
+    movingUp_ = false;
+    castle_moves_left_ = 3;
+}
 
-//default constructor
+// default constructor
 Rook::Rook(const string& color, const int& row, const int& column, const bool& movingUp, const int& castleMoves) : ChessPiece(color_, row_, column_, movingUp_), castle_moves_left_(3) {
     if (!ValidColor(color)) { //if color is not valid
         color_ = "BLACK";
