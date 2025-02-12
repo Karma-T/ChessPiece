@@ -10,7 +10,7 @@
 using namespace std;
 
 //parameterized constructor
-Pawn::Pawn(const string& color, const int& row, const int& column, const bool& movingUp, const bool& double_jumpable) : ChessPiece("BLACK", -1, -1, false), double_jumpable_(false) {
+Pawn::Pawn(const string& color, const int& row, const int& column, const bool& movingUp, const bool& double_jumpable) : ChessPiece(color, row, column, movingUp), double_jumpable_(double_jumpable) {
     if (!ValidColor(color)) { //if color is not valid
         color_ = "BLACK";
     }
