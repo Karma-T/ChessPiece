@@ -9,7 +9,7 @@
 using namespace std;
 
 //default constructor
-Rook::Rook(const string& color, const int& row, const int& column, const bool& movingUp, const int& castleMoves) : ChessPiece(color_, row_, column_, movingUp_), castle_moves_left_(3) {
+Rook::Rook(const string& color, const int& row, const int& column, const bool& movingUp, const int& castleMoves) : ChessPiece(color_, row_, column_, movingUp_), castle_moves_left_(castleMoves < 0 ? 0 : castleMoves) {
     if (!ValidColor(color)) { //if color is not valid
         color_ = "BLACK";
     } else {
