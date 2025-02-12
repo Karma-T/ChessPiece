@@ -31,7 +31,7 @@ void Pawn::toggleDoubleJump() { //toggle double jump
 
 bool Pawn::canPromote() const {//returns if the pawn can promote
     if (movingUp_) {
-        return (row_ == BOARD_SIZE - 1); //if the pawn is on the last row
+        return (row_ == BOARD_LENGTH - 1); //if the pawn is on the last row
     } else {
         return (row_ == 0); //if the pawn is on the first row
     }
