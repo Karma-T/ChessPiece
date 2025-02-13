@@ -53,7 +53,7 @@ class Rook : public ChessPiece {
  * @param ChessPiece A const reference to chess piece with which the rook may / may not be able to castle with
  * @return True if the rook can castle with the given piece. False otherwise.
  */
-        bool canCastle() const; 
+        bool canCastle(const ChessPiece &other) const; 
 /**
  * @brief Gets the value of the castle_moves_left_
  * @return The integer value stored in castle_moves_left_
