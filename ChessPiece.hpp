@@ -2,8 +2,8 @@
 //Date: Feb 11 2025
 //Defining the chess piece base class.
 
-#ifndef CHESSPIECE_HPP
-#define CHESSPIECE_HPP
+#ifndef CHESS_PIECE_HPP
+#define CHESS_PIECE_HPP
 
 #include <string>
 
@@ -119,6 +119,7 @@ class ChessPiece {
    WHITE piece is not on the board
  */
         void display() const; //displays the chess piece
+        void runOutput() const; //runs the output
 };
 
 #endif // CHESSPIECE_HPP
