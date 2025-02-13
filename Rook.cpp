@@ -7,11 +7,12 @@
 #include "Rook.hpp"
 
 // Default Constructor
-Rook::Rook() : ChessPiece(), castle_moves_left_(3) {}
+Rook::Rook() : ChessPiece() {
+    castle_moves_left = 3;
+}
 
 // Parameterized Constructor
-Rook::Rook(const std::string &color, const int &row, const int &column, const bool &movingUp, const int &castle_moves_left)
-    : ChessPiece(color, row, column, movingUp), castle_moves_left_(castle_moves_left < 0 ? 0 : castle_moves_left) {}
+Rook::Rook(const std::string &color, const int &row, const int &column, const bool &movingUp, const int &castle_moves_left) : ChessPiece(color, row, column, movingUp), castle_moves_left_(castle_moves_left < 0 ? 0 : castle_moves_left) {}
 
 // Accessors & Mutators
 bool Rook::canCastle(const ChessPiece &other) const {
