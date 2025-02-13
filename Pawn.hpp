@@ -42,7 +42,8 @@ class Pawn : public ChessPiece {
 *      then BOTH are set to -1 (regardless of being in-bounds or not).
 * @note Remember to construct the base-class as well using these parameters!
 */
-        Pawn(const std::string& color, const int& row, const int& column, const bool& movingUp, const bool& double_jumpable = false); //parameterized constructor
+    // Parameterized Constructor
+    Pawn(const std::string &color, const int &row = -1, const int &column = -1, const bool &movingUp = false, const bool &double_jumpable = false);
 
 /**
  * @brief Gets the value of the flag for the Pawn can double jump
