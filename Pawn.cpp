@@ -7,11 +7,14 @@
 #include "Pawn.hpp"
 
 // Default Constructor
-Pawn::Pawn() : ChessPiece(), double_jumpable_(false) {}
+Pawn::Pawn() : ChessPiece() {
+    double_jumpable_ = false;
+}
 
 // Parameterized Constructor
-Pawn::Pawn(const std::string &color, const int &row, const int &column, const bool &movingUp, const bool &double_jumpable)
-    : ChessPiece(color, row, column, movingUp), double_jumpable_(double_jumpable) {}
+Pawn::Pawn(const std::string &color, const int &row, const int &column, const bool &movingUp, const bool &double_jumpable) : ChessPiece(color, row, column, movingUp), double_jumpable_(double_jumpable) {
+    
+}
 
 // Accessors & Mutators
 bool Pawn::canDoubleJump() const { return double_jumpable_; }
