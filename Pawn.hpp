@@ -43,7 +43,7 @@ class Pawn : public ChessPiece {
 * @note Remember to construct the base-class as well using these parameters!
 */
     // Parameterized Constructor
-    Pawn(const std::string &color, const int &row = -1, const int &column = -1, const bool &movingUp = false, const bool &double_jumpable = false);
+    Pawn(const std::string &color, const int &row, const int &column, const bool &movingUp, const bool &double_jumpable);
 
 /**
  * @brief Gets the value of the flag for the Pawn can double jump
@@ -67,6 +67,8 @@ class Pawn : public ChessPiece {
  * @return True if this pawn can be promoted. False otherwise.
  */
         bool canPromote() const; //returns if the pawn can promote
+
+        void runOutput() const; //runs the output for the pawn
 };
 
 #endif // PAWN_HPP
