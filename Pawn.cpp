@@ -12,9 +12,7 @@ Pawn::Pawn() : ChessPiece() {
 }
 
 // Parameterized Constructor
-Pawn::Pawn(const std::string &color, const int &row, const int &column, const bool &movingUp, const bool &double_jumpable) : ChessPiece(color, row, column, movingUp), double_jumpable_(double_jumpable) {
-    
-}
+Pawn::Pawn(const std::string &color, const int &row, const int &column, const bool &movingUp, const bool &double_jumpable) : ChessPiece(color, row, column, movingUp), double_jumpable_(double_jumpable) {}
 
 // Accessors & Mutators
 bool Pawn::canDoubleJump() const { return double_jumpable_; }
@@ -25,3 +23,6 @@ bool Pawn::canPromote() const {
     return (movingUp_ && row_ == BOARD_LENGTH - 1) || (!movingUp_ && row_ == 0);
 }
 
+void Pawn::runOutput() const{
+    display();
+}
