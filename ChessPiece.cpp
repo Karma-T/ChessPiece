@@ -85,3 +85,7 @@ void ChessPiece::display() const {
         std::cout << color_ << " piece is not on the board" << std::endl;
     }
 }
+
+void ChessPiece::runOutput() const {
+    display();
+}
