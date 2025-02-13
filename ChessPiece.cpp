@@ -18,8 +18,7 @@ ChessPiece::ChessPiece() {
 }
 
 // Parameterized Constructor
-ChessPiece::ChessPiece(const std::string &color, const int &row, const int &column, const bool &movingUp) 
-    : row_(row), column_(column), movingUp_(movingUp) {
+ChessPiece::ChessPiece(const std::string &color, const int &row, const int &column, const bool &movingUp) : row_(row), column_(column), movingUp_(movingUp) {
     bool valid = true;
     for (char c : color) {
         if (!std::isalpha(c)) {
