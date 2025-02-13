@@ -6,37 +6,21 @@
 #include <string>
 #include "Rook.hpp"
 
-using namespace std;
-Rook::Rook(){
-    color_ = "BLACK";
-    row_ = -1;
-    column_ = -1;
-    movingUp_ = false;
-    castle_moves_left_ = 3;
+// Default Constructor
+Rook::Rook() : ChessPiece(), castle_moves_left_(3) {}
+
+// Parameterized Constructor
+Rook::Rook(const std::string &color, const int &row, const int &column, const bool &movingUp, const int &castle_moves_left)
+    : ChessPiece(color, row, column, movingUp), castle_moves_left_(castle_moves_left < 0 ? 0 : castle_moves_left) {}
+
+// Accessors & Mutators
+bool Rook::canCastle(const ChessPiece &other) const {
+    return (castle_moves_left_ > 0 && // Must have at least 1 castle move left
+            color_ == other.getColor() && // Both pieces must have the same color
+            row_ == other.getRow() && // Both pieces must be in the same row
+            (column_ == other.getColumn() + 1 || column_ == other.getColumn() - 1)); // Adjacent columns
 }
 
-// default constructor
-Rook::Rook(const string& color, const int& row, const int& column, const bool& movingUp, const int& castleMoves) : ChessPiece(color_, row_, column_, movingUp_), castle_moves_left_(3) {
-    if (!ValidColor(color)) { //if color is not valid
-        color_ = "BLACK";
-    } else {
-        color_ = UpperCase(color);
-    }
+int Rook::getCastleMovesLeft() const { return castle_moves_left_; }
 
-    if (!ValidPosition(row) || !ValidPosition(column)) { //if row and column is not valid
-        row_ = -1;
-        column_ = -1;
-    }
 
-    if (castle_moves_left_ < 0) { //castle moves cannot be negative
-        castle_moves_left_ = 0;
-    }
-}
-
-int Rook::getCastleMovesLeft() const { //returns the number of castle moves left
-    return castle_moves_left_;
-}
-
-bool Rook::canCastle() const { //returns if the rook can castle
-    return castle_moves_left_ > 0; //castle moves left
-}
