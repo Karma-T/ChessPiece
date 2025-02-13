@@ -8,7 +8,7 @@
 
 // Default Constructor
 Rook::Rook() : ChessPiece() {
-    castle_moves_left = 3;
+    castle_moves_left_ = 3;
 }
 
 // Parameterized Constructor
@@ -23,5 +23,10 @@ bool Rook::canCastle(const ChessPiece &other) const {
 }
 
 int Rook::getCastleMovesLeft() const { return castle_moves_left_; }
+
+void Rook::runOutput() const{
+    display();
+}
+
 
 
