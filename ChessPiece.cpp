@@ -17,96 +17,72 @@ ChessPiece::ChessPiece() {
     movingUp_ = false;
 }
 
-//parameterized constructor
-ChessPiece::ChessPiece(const string& color, const int& row, const int& column, const bool& movingUp) {
-    if (ValidColor(color)) {
-        color_ = UpperCase(color);
+// Parameterized Constructor
+ChessPiece::ChessPiece(const std::string &color, const int &row, const int &column, const bool &movingUp) 
+    : row_(row), column_(column), movingUp_(movingUp) {
+    bool valid = true;
+    for (char c : color) {
+        if (!std::isalpha(c)) {
+            valid = false;
+            break;
+        }
+    }
+    if (valid) {
+        color_ = color;
+        for (char &c : color_) c = std::toupper(c);
     } else {
         color_ = "BLACK";
     }
-
-    if (ValidPosition(row) && ValidPosition(column)) {
-        row_ = row;
-        column_ = column;
-    } else {
-        row_ = -1;
-        column_ = -1;
+    
+    if (row < 0 || row >= BOARD_LENGTH || column < 0 || column >= BOARD_LENGTH) {
+        this->row_ = -1;
+        this->column_ = -1;
     }
-
-    movingUp_ = movingUp;
 }
 
-bool ChessPiece::ValidColor(const string& color) const { //check if color is valid
+// Accessors & Mutators
+std::string ChessPiece::getColor() const { return color_; }
+
+bool ChessPiece::setColor(const std::string &color) {
     for (char c : color) {
-        if (!isalpha(c)) {
-            return false;
-        }
+        if (!std::isalpha(c)) return false;
     }
+    color_ = color;
+    for (char &c : color_) c = std::toupper(c);
     return true;
 }
 
-string ChessPiece::UpperCase(const string& color) const { //convert string color to uppercase
-    string color2 = color; //copy of color to convert to uppercase
-    for (char& c : color2) {
-        c = toupper(c); //each character to uppercase
-    }
-    return color2;
-}
+int ChessPiece::getRow() const { return row_; }
 
-bool ChessPiece::ValidPosition(int value) const { //check if row and column is within valid range
-    return (value >= 0 && value < BOARD_LENGTH);
-}
-
-string ChessPiece::getColor() const {
-    return color_;
-}
-
-bool ChessPiece::setColor(const string& color) {
-    if (ValidColor(color)) {
-        color_ = UpperCase(color);
-        return true;
-    }
-    return false;
-}
-
-int ChessPiece::getRow() const {
-    return row_;
-}
-
-int ChessPiece::getColumn() const {
-    return column_;
-}
-
-void ChessPiece::setRow(const int& row) {
-    if (ValidPosition(row)) {
+void ChessPiece::setRow(const int &row) {
+    if (row < 0 || row >= BOARD_LENGTH) {
+        row_ = -1;
+        column_ = -1;
+    } else {
         row_ = row;
-    } else {
-        row_ = -1;
-        column_ = -1;
     }
 }
 
-void ChessPiece::setColumn(const int& column) {
-    if (ValidPosition(column)) {
+int ChessPiece::getColumn() const { return column_; }
+
+void ChessPiece::setColumn(const int &column) {
+    if (column < 0 || column >= BOARD_LENGTH) {
+        row_ = -1;
+        column_ = -1;
+    } else {
         column_ = column;
-    } else {
-        row_ = -1;
-        column_ = -1;
     }
 }
 
-bool ChessPiece::isMovingUp() const {
-    return movingUp_;
-}
+bool ChessPiece::isMovingUp() const { return movingUp_; }
 
-void ChessPiece::setMovingUp(const bool& movingUp) {
-    movingUp_ = movingUp;
-}
+void ChessPiece::setMovingUp(const bool &flag) { movingUp_ = flag; }
 
-void ChessPiece::Display() const {
+void ChessPiece::display() const {
     if (row_ != -1 && column_ != -1) {
-        cout << color_ << " piece at (" << row_ << ", " << column_ << ") is moving " << (movingUp_ ? "UP" : "DOWN") << endl;
+        std::cout << color_ << " piece at (" << row_ << "," << column_ << ") is moving "
+                  << (movingUp_ ? "UP" : "DOWN") << std::endl;
     } else {
-        cout << color_ << " piece is not on the board" << endl;
+        std::cout << color_ << " piece is not on the board" << std::endl;
     }
 }
