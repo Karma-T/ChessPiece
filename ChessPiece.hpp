@@ -13,8 +13,6 @@ class ChessPiece {
         int row_;   //row of the chess piece
         int column_;    //column of the chess piece
         bool movingUp_; //direction of the chess piece
-
-    protected:
         static const int BOARD_LENGTH = 8; //size of the chess board
 
     public:
@@ -120,12 +118,7 @@ class ChessPiece {
    Example output 2:
    WHITE piece is not on the board
  */
-        void Display() const; //displays the chess piece
-
-    protected:
-        bool ValidColor(const std::string& color_) const; //checks if the color is valid
-        std::string UpperCase(const std::string& color_) const; //converts the color to uppercase
-        bool ValidPosition(int value) const; //checks if the position is valid
+        void display() const; //displays the chess piece
 };
 
 #endif // CHESSPIECE_HPP
